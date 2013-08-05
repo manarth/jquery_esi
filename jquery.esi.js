@@ -51,13 +51,6 @@
     return esi_tags;
   };
 
-  // Move child nodes to siblings.
-  $.fn.handleESIChildren = function() {
-    $(this).each(function() {
-    });
-    return this;
-  }
-
   // Handle ESI tags.
   // Delegates to either .handleESIInclude() or .handleESIRemove() as needed.
   $.fn.handleESI = function() {
