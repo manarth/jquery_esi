@@ -34,7 +34,7 @@
       jQuery("*").contents()
         .filter(function(){ return this.nodeType == 8 && this.nodeValue.match(/^esi/);})
         .each(function(){
-          var dom =  $.trim(this.nodeValue).replace('/^esi/','').trim();
+          var dom =  $.trim(this.nodeValue).replace(/^esi/,'').trim();
           $(this).after(dom);
         });
       // Discover the <esi:include> tags.
