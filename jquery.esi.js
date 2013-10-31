@@ -36,6 +36,7 @@
         .each(function(){
           var dom =  $.trim(this.nodeValue).replace(/^esi/,'').trim();
           $(this).after(dom);
+          $(this).remove();
         });
       // Discover the <esi:include> tags.
       jQuery.each(base_element.getElementsByTagName('esi:include'), function(i, val) {
