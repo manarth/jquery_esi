@@ -31,7 +31,7 @@
       // getElementsByTagName.
       base_element = $(this).get(0);
       // Discover comment-wrapped <esi:include> tags and move them out of the comment.
-      jQuery("*").contents()
+      jQuery("*:not(iframe)").contents()
         .filter(function(){ return this.nodeType == 8 && this.nodeValue.match(/^esi/);})
         .each(function(){
           var dom =  $.trim(this.nodeValue).replace(/^esi/,'').trim();
