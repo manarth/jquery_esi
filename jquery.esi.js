@@ -30,6 +30,14 @@
       // Retrieve the base DOM element, in order to access the DOM method
       // getElementsByTagName.
       base_element = $(this).get(0);
+      // Discover comment-wrapped <esi:include> tags and move them out of the comment.
+      jQuery("*:not(iframe)").contents()
+        .filter(function(){ return this.nodeType == 8 && this.nodeValue.match(/^esi/);})
+        .each(function(){
+          var dom =  $.trim(this.nodeValue).replace(/^esi/,'').trim();
+          $(this).after(dom);
+          $(this).remove();
+        });
       // Discover the <esi:include> tags.
       jQuery.each(base_element.getElementsByTagName('esi:include'), function(i, val) {
         // Some DOMs fail to recognise that the ESI include tag is self-
